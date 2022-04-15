@@ -27,6 +27,7 @@ public class EnterpriseController {
         enterpriseDO.setCreateTime(new Date());
         enterpriseDO.setUpdateBy(1);
         enterpriseDO.setUpdateTime(new Date());
+        System.out.println("hah");
         return enterpriseService.create(enterpriseDO);
     }
 }
