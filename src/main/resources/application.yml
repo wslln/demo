@@ -15,4 +15,7 @@ spring.redis.jedis.pool.max-wait: -1
 spring.redis.jedis.pool.max-idle: 20
 spring.redis.jedis.pool.min-idle: 10
 
-mybatis.mapper-locations: classpath:com.test.demo/**/dao/*.xml
+mybatis.mapper-locations: classpath:*.xml
+
+server.compression.enabled: true
+server.compression.mime-types: application/javascript,text/css,application/json,application/xml,text/html,text/xml,text/plain

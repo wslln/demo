@@ -9,7 +9,7 @@
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
     </resultMap>
 
-    <insert id="insertSelective" parameterType="com.test.demo.domain.EnterpriseDO" useGeneratedKeys="true" keyProperty="id">
+    <insert id="create" parameterType="com.test.demo.domain.EnterpriseDO" useGeneratedKeys="true" keyProperty="id">
         insert into enterprise
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">"id",</if>

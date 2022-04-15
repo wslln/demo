@@ -15,6 +15,6 @@ public class EnterpriseService {
     private final EnterpriseDAO enterpriseDAO;
 
     public Integer create(EnterpriseDO enterpriseDO) {
-        return enterpriseDAO.insertSelective(enterpriseDO);
+        return enterpriseDAO.create(enterpriseDO);
     }
 }
