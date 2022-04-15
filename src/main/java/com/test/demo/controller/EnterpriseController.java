@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
+import java.util.List;
 
 @Api(tags = "企业")
 @RestController
@@ -27,7 +28,14 @@ public class EnterpriseController {
         enterpriseDO.setCreateTime(new Date());
         enterpriseDO.setUpdateBy(1);
         enterpriseDO.setUpdateTime(new Date());
-        System.out.println("hah");
         return enterpriseService.create(enterpriseDO);
     }
+
+    @ApiOperation("企业列表")
+    @PostMapping("/list")
+    public List<EnterpriseDO> list() {
+        return enterpriseService.list();
+    }
+
+
 }

@@ -26,4 +26,8 @@
             <if test="updateTime != null">#{updateTime,jdbcType=TIMESTAMP},</if>
         </trim>
     </insert>
+
+    <select id="list" resultMap="baseMap">
+        select * from enterprise;
+    </select>
 </mapper>
