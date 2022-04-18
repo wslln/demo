@@ -2,6 +2,7 @@ package com.test.demo.service;
 
 import com.test.demo.dao.EnterpriseDAO;
 import com.test.demo.domain.EnterpriseDO;
+import com.test.demo.dto.EnterpriseQueryDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class EnterpriseService {
         return enterpriseDAO.create(enterpriseDO);
     }
 
-    public List<EnterpriseDO> list() {
-        return enterpriseDAO.list();
+    public List<EnterpriseDO> list(EnterpriseQueryDTO enterpriseQueryDTO) {
+        return enterpriseDAO.list(enterpriseQueryDTO);
     }
 }

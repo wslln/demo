@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.test.demo.dao.EnterpriseDAO">
-    <resultMap id="baseMap" type="com.test.demo.domain.EnterpriseDO">
+    <resultMap id="BaseResultMap" type="com.test.demo.domain.EnterpriseDO">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="create_by" jdbcType="INTEGER" property="createBy"/>
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
         <result column="update_by" jdbcType="INTEGER" property="updateBy"/>
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
     </resultMap>
+
+    <sql id="Base_Column_List">
+        "id",
+        "create_by",
+        "create_time",
+        "update_by",
+        "update_time"
+    </sql>
 
     <insert id="create" parameterType="com.test.demo.domain.EnterpriseDO" useGeneratedKeys="true" keyProperty="id">
         insert into enterprise
@@ -27,7 +35,29 @@
         </trim>
     </insert>
 
-    <select id="list" resultMap="baseMap">
-        select * from enterprise;
+    <select id="list" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from enterprise
+        <where>
+            <include refid="whereSql"/>
+        </where>
+        order by ${orderByColumn} ${orderBy}
+        limit #{limit} offset #{offset}
     </select>
+
+    <sql id="whereSql">
+        <if test="createBy != null">
+            and create_by = #{createBy}
+        </if>
+        <if test="createTime != null">
+            and create_time = #{createTime}
+        </if>
+        <if test="updateBy != null">
+            and update_by = #{updateBy}
+        </if>
+        <if test="updateTime != null">
+            and update_time = #{updateTime}
+        </if>
+    </sql>
 </mapper>
